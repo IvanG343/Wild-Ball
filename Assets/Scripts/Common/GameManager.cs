@@ -5,8 +5,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private GameObject teleportRoom;
-    [SerializeField] private GameObject teleportRoomDoor;
+    public TeleportRoom teleportRoom;
 
     public int totalCubes;
     public static int cubesToWin;
@@ -21,14 +20,8 @@ public class GameManager : MonoBehaviour
         if (cubesToWin == 0)
         {
             cubesToWin = -1;
-            OpenTeleportRoom();
+            teleportRoom.OpenTeleportRoom();
         }
-    }
-
-    private void OpenTeleportRoom()
-    {
-        teleportRoom.SetActive(true);
-        teleportRoomDoor.SetActive(false);
     }
 }
 
