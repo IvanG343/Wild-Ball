@@ -1,16 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
 
 public class GameManager : MonoBehaviour
 {
-    public TeleportRoom teleportRoom;
+    [SerializeField] private TeleportRoom teleportRoom;
+    [SerializeField] private GameObject stageCompleteWindow;
 
     public int totalCubes;
     public static int cubesToWin;
 
-    private void Awake()
+    private void Start()
     {
         cubesToWin = totalCubes;
     }
@@ -21,7 +19,13 @@ public class GameManager : MonoBehaviour
         {
             cubesToWin = -1;
             teleportRoom.OpenTeleportRoom();
+            ShowStageComleteWindow();
         }
+    }
+
+    private void ShowStageComleteWindow()
+    {
+        stageCompleteWindow.SetActive(true);
     }
 }
 

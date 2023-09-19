@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -11,11 +9,6 @@ public class MenuHandler : MonoBehaviour
     void Start()
     {
         Time.timeScale = 1.0f;
-    }
-
-    void Update()
-    {
-        
     }
 
     public void OnClickSelectLevel(int id)

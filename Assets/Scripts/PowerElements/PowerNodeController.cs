@@ -1,8 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
-
 
 public class PowerNodeController : MonoBehaviour
 {
@@ -11,20 +7,19 @@ public class PowerNodeController : MonoBehaviour
     [SerializeField] private Material purpleMat;
     [SerializeField] private Material yellowMat;
 
-    [SerializeField] private GameObject actionTipPanel;
+    public UIController uiController;
 
     private bool playerInArea;
-    private string playerCurrentColor;
 
-    private Renderer cubeMaterial;
-    private Animator cubeAnimator;
+    private Renderer nodeMaterial;
+    private Animator nodeAnimator;
     private AudioSource nodeUseSound;
 
     private void Start()
     {
-        cubeMaterial = GetComponentInParent<Renderer>();
-        cubeAnimator = GetComponentInParent<Animator>();
-        nodeUseSound = GetComponentInParent<AudioSource>();
+        nodeMaterial = transform.Find("Node").GetComponentInChildren<Renderer>();
+        nodeAnimator = transform.Find("Node").GetComponent<Animator>();
+        nodeUseSound = transform.Find("Node").GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -32,7 +27,15 @@ public class PowerNodeController : MonoBehaviour
         if (playerInArea)
         {
             if (Input.GetKeyDown(KeyCode.E))
-                ChangeNodeColor(playerCurrentColor);
+            {
+                ChangeNodeColor(gameObject.tag);
+                nodeAnimator.SetTrigger("StartAnimation");
+                nodeUseSound.Play();
+                GameManager.cubesToWin--;
+                playerInArea = false;
+                gameObject.tag = "Untagged";
+                uiController.HideActionTip();
+            }
         }
     }
 
@@ -40,18 +43,15 @@ public class PowerNodeController : MonoBehaviour
     {
         if (gameObject.tag == other.gameObject.tag)
         {
-            Debug.Log("enter");
-            ShowActionTooltip();
+            uiController.ShowActionTip();
             playerInArea = true;
-            playerCurrentColor = other.gameObject.tag;
         }
 
     }
 
     private void OnTriggerExit(Collider other)
     {
-        Debug.Log("exit");
-        HideActionTooltip();
+        uiController.HideActionTip();
         playerInArea = false;
     }
 
@@ -60,41 +60,19 @@ public class PowerNodeController : MonoBehaviour
         switch (color)
         {
             case "Yellow":
-                cubeMaterial.material = yellowMat;
-                cubeAnimator.SetTrigger("StartAnimation");
-                nodeUseSound.Play();
-                GameManager.cubesToWin--;
+                nodeMaterial.material = yellowMat;
                 break;
             case "Red":
-                cubeMaterial.material = redMat;
-                cubeAnimator.SetTrigger("StartAnimation");
-                GameManager.cubesToWin--;
-                nodeUseSound.Play();
+                nodeMaterial.material = redMat;
                 break;
             case "Green":
-                cubeMaterial.material = greenMat;
-                cubeAnimator.SetTrigger("StartAnimation");
-                GameManager.cubesToWin--;
-                nodeUseSound.Play();
+                nodeMaterial.material = greenMat;
                 break;
             case "Purple":
-                cubeMaterial.material = purpleMat;
-                cubeAnimator.SetTrigger("StartAnimation");
-                GameManager.cubesToWin--;
-                nodeUseSound.Play();
+                nodeMaterial.material = purpleMat;
                 break;
             default: break;
         }
-    }
-
-    public void ShowActionTooltip()
-    {
-        actionTipPanel.SetActive(true);
-    }
-
-    public void HideActionTooltip()
-    {
-        actionTipPanel.SetActive(false);
     }
 
 }

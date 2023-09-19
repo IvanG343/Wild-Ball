@@ -1,8 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -11,9 +7,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Material purpleMat;
     [SerializeField] private Material yellowMat;
 
+    [SerializeField] private SceneController sceneController;
+
     private Renderer playerCurrentMaterial;
 
-    private void Awake()
+    private void Start()
     {
         playerCurrentMaterial = GetComponent<Renderer>();
     }
@@ -46,12 +44,21 @@ public class PlayerController : MonoBehaviour
     {
         if(other.CompareTag("Finish"))
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            sceneController.LoadNextLevel();
         }
 
         if(other.CompareTag("DeathZone"))
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            sceneController.RestartCurrentLevel();
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.CompareTag("Enemy"))
+        {
+            Debug.Log("Collision with enemy");
+            sceneController.RestartCurrentLevel();
         }
     }
 

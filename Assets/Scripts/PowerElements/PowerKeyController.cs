@@ -1,19 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class PowerKeyController : MonoBehaviour
 {
-    [SerializeField] private PlayerController playerController;
-    [SerializeField] private GameObject ActionTipPanel;
+    public PlayerController playerController;
+    public UIController uiController;
+
     private AudioSource useSound;
 
     private bool playerInArea;
 
     private void Start()
     {
-        useSound = GetComponentInParent<AudioSource>();
+        useSound = GetComponentInChildren<AudioSource>();
     }
 
     private void Update()
@@ -24,6 +22,8 @@ public class PowerKeyController : MonoBehaviour
             {
                 playerController.ChangePlayerColor(gameObject.tag);
                 useSound.Play();
+                playerInArea = false;
+                uiController.HideActionTip();
             }
         }
     }
@@ -32,27 +32,15 @@ public class PowerKeyController : MonoBehaviour
     {
         if (gameObject.tag != other.gameObject.tag)
         {
-            ShowActionTooltip();
+            uiController.ShowActionTip();
             playerInArea = true;
         }
-
-
     }
 
     private void OnTriggerExit(Collider other)
     {
-        HideActionTooltip();
+        uiController.HideActionTip();
         playerInArea = false;
-    }
-
-    public void ShowActionTooltip()
-    {
-        ActionTipPanel.SetActive(true);
-    }
-
-    public void HideActionTooltip()
-    {
-        ActionTipPanel.SetActive(false);
     }
 
 }
