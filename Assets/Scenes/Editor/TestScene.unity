@@ -522,7 +522,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 184593366}
-  m_LocalRotation: {x: 0.44432303, y: 0.000000015414624, z: -0.000000007645191, w: 0.8958667}
+  m_LocalRotation: {x: 0.44432303, y: 0.000000015414622, z: -0.00000000764519, w: 0.8958667}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1676,10 +1676,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8756346183972969674, guid: d0d81fb9c443e174b8e1d04bec014c12, type: 3}
       propertyPath: m_Name
-      value: SpeedBonus
-      objectReference: {fileID: 0}
-    - target: {fileID: 8756346183972969674, guid: d0d81fb9c443e174b8e1d04bec014c12, type: 3}
-      propertyPath: m_TagString
       value: SpeedBonus
       objectReference: {fileID: 0}
     m_RemovedComponents: []

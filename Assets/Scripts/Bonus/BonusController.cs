@@ -16,16 +16,16 @@ public class BonusController : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.layer == 6)
-            animator.SetTrigger("Play");
-
-        switch(gameObject.tag)
         {
-            case "SpeedBonus":
-                playerControls.playerSpeed *= 1.5f;
-                break;
+            animator.SetTrigger("Play");
+            switch (gameObject.tag)
+            {
+                case "SpeedBonus":
+                    playerControls.playerSpeed *= 1.25f;
+                    break;
+            }
+            this.GetComponent<BoxCollider>().enabled = false;
         }
-
-        this.GetComponent<BoxCollider>().enabled = false;
     }
 
     public void StartParticles()

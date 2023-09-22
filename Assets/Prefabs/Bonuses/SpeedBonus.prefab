@@ -4900,7 +4900,7 @@ GameObject:
   - component: {fileID: 4777862553025764591}
   m_Layer: 0
   m_Name: SpeedBonus
-  m_TagString: Untagged
+  m_TagString: SpeedBonus
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4920,7 +4920,7 @@ Transform:
   - {fileID: 4912602785136325508}
   - {fileID: 560409551345467567}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1017035018980891951
 BoxCollider:
