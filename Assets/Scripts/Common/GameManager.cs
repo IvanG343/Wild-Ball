@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
             teleportRoom.OpenTeleportRoom();
             ShowStageComleteWindow();
         }
+        Debug.Log(Time.timeScale);
     }
 
     private void ShowStageComleteWindow()
