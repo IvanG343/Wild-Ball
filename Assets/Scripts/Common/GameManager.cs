@@ -5,19 +5,19 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TeleportRoom teleportRoom;
     [SerializeField] private GameObject stageCompleteWindow;
 
-    public int totalCubes;
-    public static int cubesToWin;
+    public int totalNodesOnLevel;
+    public static int nodesToWin;
 
     private void Start()
     {
-        cubesToWin = totalCubes;
+        nodesToWin = totalNodesOnLevel;
     }
 
     private void Update()
     {
-        if (cubesToWin == 0)
+        if (nodesToWin == 0)
         {
-            cubesToWin = -1;
+            nodesToWin = -1;
             teleportRoom.OpenTeleportRoom();
             ShowStageComleteWindow();
         }

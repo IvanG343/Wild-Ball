@@ -6,22 +6,22 @@ public class PlayerControls : MonoBehaviour
 {
     [SerializeField] private InputActionReference movementControl;
     [SerializeField] private InputActionReference jumpControl;
-    [SerializeField] private float playerSpeed = 2.0f;
     [SerializeField] private float jumpHeight = 1.0f;
     [SerializeField] private float gravityValue = -9.81f;
+    public float playerSpeed = 2.0f;
 
     private CharacterController controller;
     private Vector3 playerVelocity;
     private bool groundedPlayer;
     private Transform cameraMainTranfsorm;
 
-    private void OnEnable()
+    public void OnEnable()
     {
         movementControl.action.Enable();
         jumpControl.action.Enable();
     }
 
-    private void OnDisable()
+    public void OnDisable()
     {
         movementControl.action.Disable();
         jumpControl.action.Disable();

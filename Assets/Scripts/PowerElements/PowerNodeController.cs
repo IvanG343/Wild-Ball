@@ -6,8 +6,7 @@ public class PowerNodeController : MonoBehaviour
     [SerializeField] private Material greenMat;
     [SerializeField] private Material purpleMat;
     [SerializeField] private Material yellowMat;
-
-    public UIController uiController;
+    private UIController uiController;
 
     private bool playerInArea;
 
@@ -17,6 +16,7 @@ public class PowerNodeController : MonoBehaviour
 
     private void Start()
     {
+        uiController = GameObject.Find("UICanvas").GetComponent<UIController>();
         nodeMaterial = transform.Find("Node").GetComponentInChildren<Renderer>();
         nodeAnimator = transform.Find("Node").GetComponent<Animator>();
         nodeUseSound = transform.Find("Node").GetComponent<AudioSource>();
@@ -31,7 +31,7 @@ public class PowerNodeController : MonoBehaviour
                 ChangeNodeColor(gameObject.tag);
                 nodeAnimator.SetTrigger("StartAnimation");
                 nodeUseSound.Play();
-                GameManager.cubesToWin--;
+                GameManager.nodesToWin--;
                 playerInArea = false;
                 gameObject.tag = "Untagged";
                 uiController.HideActionTip();

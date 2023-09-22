@@ -6,7 +6,7 @@ public class TutorialController : MonoBehaviour
     [SerializeField] private GameObject tip1;
     [SerializeField] private GameObject tip2;
     [SerializeField] private GameObject tip3;
-    [SerializeField] private GameObject teleportRoom;
+    [SerializeField] private PlayerControls playerControls;
 
     private int currentTipIndex;
     private GameObject triggerToDeactivate;
@@ -14,11 +14,11 @@ public class TutorialController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Time.timeScale = 0;
         inTriggerArea = true;
-        if(other.gameObject.layer == 6)
+        if (other.gameObject.layer == 6)
         {
-            switch(gameObject.name)
+            playerControls.OnDisable();
+            switch (gameObject.name)
             {
                 case "0.StartTipTrigger":
                     tip0.SetActive(true);
@@ -44,15 +44,9 @@ public class TutorialController : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.layer == 6)
-            inTriggerArea = false;
-    }
-
     private void Update()
     {
-        if(inTriggerArea)
+        if (inTriggerArea)
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
@@ -61,22 +55,22 @@ public class TutorialController : MonoBehaviour
                     case 0:
                         tip0.SetActive(false);
                         triggerToDeactivate.SetActive(false);
-                        Time.timeScale = 1.0F;
+                        playerControls.OnEnable();
                         break;
                     case 1:
                         tip1.SetActive(false);
                         triggerToDeactivate.SetActive(false);
-                        Time.timeScale = 1.0F;
+                        playerControls.OnEnable();
                         break;
                     case 2:
                         tip2.SetActive(false);
                         triggerToDeactivate.SetActive(false);
-                        Time.timeScale = 1.0F;
+                        playerControls.OnEnable();
                         break;
                     case 3:
                         tip3.SetActive(false);
                         triggerToDeactivate.SetActive(false);
-                        Time.timeScale = 1.0F;
+                        playerControls.OnEnable();
                         break;
                 }
             }

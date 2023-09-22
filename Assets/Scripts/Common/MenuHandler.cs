@@ -1,20 +1,10 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class MenuHandler : MonoBehaviour
 {
 
-    public GameObject pausePanel;
-
-    void Start()
-    {
-        Time.timeScale = 1.0f;
-    }
-
-    public void OnClickSelectLevel(int id)
-    {
-        SceneManager.LoadScene(id);
-    }
+    [SerializeField] public GameObject pausePanel;
+    [SerializeField] public SceneController sceneController;
 
     public void OnClickPauseButton()
     {
@@ -34,14 +24,21 @@ public class MenuHandler : MonoBehaviour
         }
     }
 
+    public void OnClickSelectLevel(int id)
+    {
+        sceneController.LoadLevel(id);
+    }
+
     public void OnClickRestartButton()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        Time.timeScale = 1.0F;
+        sceneController.RestartCurrentLevel();
     }
 
     public void OnClickPauseExitButton()
     {
-        SceneManager.LoadScene(0);
+        Time.timeScale = 1.0F;
+        sceneController.LoadLevel(0);
     }
 
 }

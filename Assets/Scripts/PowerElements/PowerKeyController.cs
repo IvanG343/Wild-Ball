@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class PowerKeyController : MonoBehaviour
 {
-    public PlayerController playerController;
-    public UIController uiController;
+    private PlayerController playerController;
+    private UIController uiController;
 
     private AudioSource useSound;
 
@@ -11,6 +11,8 @@ public class PowerKeyController : MonoBehaviour
 
     private void Start()
     {
+        playerController = GameObject.Find("Player").GetComponent<PlayerController>();
+        uiController = GameObject.Find("UICanvas").GetComponent<UIController>();
         useSound = GetComponentInChildren<AudioSource>();
     }
 

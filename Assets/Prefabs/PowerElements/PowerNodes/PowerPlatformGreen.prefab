@@ -697,7 +697,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: bdeb809d943d0e740873c2caacb1f704, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -832,7 +832,6 @@ MonoBehaviour:
   greenMat: {fileID: 2100000, guid: 651dd687e6df2de4eb4d434e1698546c, type: 2}
   purpleMat: {fileID: 2100000, guid: 4675c0de9c7234f4b87227dd80731f43, type: 2}
   yellowMat: {fileID: 2100000, guid: 8a6d3df6bd9bc04478b6b80e3b63f96f, type: 2}
-  uiController: {fileID: 0}
 --- !u!65 &1028947527580208225
 BoxCollider:
   m_ObjectHideFlags: 0

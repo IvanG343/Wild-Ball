@@ -9,11 +9,17 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private SceneController sceneController;
 
-    private Renderer playerCurrentMaterial;
+    [SerializeField] private ParticleSystem electricityParticles;
+    [SerializeField] private ParticleSystem deathParticles;
+    [SerializeField] private ParticleSystemRenderer deathParticlesMat;
 
-    private void Start()
+    private Renderer playerCurrentMaterial;
+    private PlayerControls playerControls;
+
+    private void Awake()
     {
         playerCurrentMaterial = GetComponent<Renderer>();
+        playerControls = GetComponent<PlayerControls>();
     }
 
     public void ChangePlayerColor(string color)
@@ -22,22 +28,31 @@ public class PlayerController : MonoBehaviour
         {
             case "Yellow":
                 playerCurrentMaterial.material = yellowMat;
+                electricityParticles.Play();
                 gameObject.tag = "Yellow";
                 break;
             case "Red":
                 playerCurrentMaterial.material = redMat;
+                electricityParticles.Play();
                 gameObject.tag = "Red";
                 break;
             case "Green":
                 playerCurrentMaterial.material = greenMat;
+                electricityParticles.Play();
                 gameObject.tag = "Green";
                 break;
             case "Purple":
                 playerCurrentMaterial.material = purpleMat;
+                electricityParticles.Play();
                 gameObject.tag = "Purple";
                 break;
             default: break;
         }
+    }
+
+    private void Update()
+    {
+        deathParticles.transform.position = gameObject.transform.position;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -57,7 +72,12 @@ public class PlayerController : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Enemy"))
         {
-            Debug.Log("Collision with enemy");
+            playerControls.OnDisable();
+            playerCurrentMaterial.enabled = false;
+
+            deathParticlesMat.material = playerCurrentMaterial.material;
+            deathParticles.Play();
+
             sceneController.RestartCurrentLevel();
         }
     }

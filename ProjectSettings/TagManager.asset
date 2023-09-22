@@ -10,6 +10,7 @@ TagManager:
   - Purple
   - DeathZone
   - Enemy
+  - SpeedBonus
   layers:
   - Default
   - TransparentFX
