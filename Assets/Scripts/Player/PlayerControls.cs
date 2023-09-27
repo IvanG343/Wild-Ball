@@ -15,12 +15,14 @@ public class PlayerControls : MonoBehaviour
     private bool groundedPlayer;
     private Transform cameraMainTranfsorm;
 
+    //Метод для включения управление игрока
     public void OnEnable()
     {
         movementControl.action.Enable();
         jumpControl.action.Enable();
     }
 
+    //Метод для отключения управление игрока
     public void OnDisable()
     {
         movementControl.action.Disable();
@@ -33,6 +35,7 @@ public class PlayerControls : MonoBehaviour
         cameraMainTranfsorm = Camera.main.transform;
     }
 
+    //Управление игрока по вектору камеры
     void Update()
     {
         groundedPlayer = controller.isGrounded;

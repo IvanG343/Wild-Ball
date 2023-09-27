@@ -7,6 +7,7 @@ public class PowerNodeController : MonoBehaviour
     [SerializeField] private Material purpleMat;
     [SerializeField] private Material yellowMat;
     private UIController uiController;
+    private GameManager gameManager;
 
     private bool playerInArea;
 
@@ -17,11 +18,18 @@ public class PowerNodeController : MonoBehaviour
     private void Start()
     {
         uiController = GameObject.Find("UICanvas").GetComponent<UIController>();
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         nodeMaterial = transform.Find("Node").GetComponentInChildren<Renderer>();
         nodeAnimator = transform.Find("Node").GetComponent<Animator>();
         nodeUseSound = transform.Find("Node").GetComponent<AudioSource>();
     }
 
+    //Проверяем, что игрок находится в зоне действия триггера
+    //При нажатии Е вызываем метод ChangeNodeColor передавая через тег игрока цвет на который нужно сменить материал ноды
+    //Запускаем анимцию активации ноды и проигрываем звук
+    //Убираем флаг, что игрок в триггере, после успешного взаимодействия, чтобы он не мог спамить Е запуская звук и анимации бесконечно
+    //Вызывает метод HideActionTip скрипта UIController для скрытия подсказки "Нажмите Е для взаимодействия" после того как игрок успешно сменил свой материал
+    //Делаем декремент перменной totalNodes скрипта GameManager (условие прохождения уровня активировать все ноды, т.е. totalNodes == 0)
     private void Update()
     {
         if (playerInArea)
@@ -31,14 +39,16 @@ public class PowerNodeController : MonoBehaviour
                 ChangeNodeColor(gameObject.tag);
                 nodeAnimator.SetTrigger("StartAnimation");
                 nodeUseSound.Play();
-                GameManager.nodesToWin--;
                 playerInArea = false;
-                gameObject.tag = "Untagged";
                 uiController.HideActionTip();
+                gameManager.totalNodes--;
             }
         }
     }
 
+    //При входе в триггер проверяем, что цвет игрока соотвествует цвету ноды для возможности её активировать
+    //Вызывает метод ShowActionTip скрипта UIController для отображения подсказки "Нажмите Е для взаимодействия"
+    //Задает флаг что игрок находится в зоне триггера
     private void OnTriggerEnter(Collider other)
     {
         if (gameObject.tag == other.gameObject.tag)
@@ -49,12 +59,15 @@ public class PowerNodeController : MonoBehaviour
 
     }
 
+    //Вызывает метод HideActionTip скрипта UIController для скрытия подсказки "Нажмите Е для взаимодействия", если игрок вышел из триггера
+    //Задаём флаг, что игрок покинул зону триггера
     private void OnTriggerExit(Collider other)
     {
         uiController.HideActionTip();
         playerInArea = false;
     }
 
+    //Меняем цвет ноды с дефолтного на целевой при её активации
     public void ChangeNodeColor(string color)
     {
         switch (color)

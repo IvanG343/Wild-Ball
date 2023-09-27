@@ -13,6 +13,8 @@ public class BonusController : MonoBehaviour
         particles = GetComponentInChildren<ParticleSystem>();
     }
 
+    //При подборе бонуса увеличиваем параметр скорости игрока через скрипт PlayerControls
+    //Отключаем коллайдер, для того чтобы проиграть анимацию и систему частиц на объекте
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.layer == 6)
@@ -28,6 +30,7 @@ public class BonusController : MonoBehaviour
         }
     }
 
+    //Вызывается ивентом из анимации
     public void StartParticles()
     {
         particles.Play();

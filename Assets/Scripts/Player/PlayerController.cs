@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Material yellowMat;
 
     [SerializeField] private SceneController sceneController;
+    [SerializeField] private GameObject fullScreenMap;
 
     [SerializeField] private ParticleSystem electricityParticles;
     [SerializeField] private ParticleSystem deathParticles;
@@ -22,6 +23,10 @@ public class PlayerController : MonoBehaviour
         playerControls = GetComponent<PlayerControls>();
     }
 
+    //Вызывается из скрипта PowerKeyController
+    //Меняет материал игрока на цвет соовтествуюещй сфере
+    //Запускает систему частиц для эффекта активации
+    //Задаёт игроку тег соовтествующий новому цвету
     public void ChangePlayerColor(string color)
     {
         switch (color)
@@ -50,24 +55,41 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    //Задаёт позицию системе частиц смерти равную позиции игрока
+    //Вызывает карту при нажатии на клавишу М
     private void Update()
     {
         deathParticles.transform.position = gameObject.transform.position;
+
+        if(Input.GetKeyDown(KeyCode.M))
+            if(!fullScreenMap.activeSelf)
+                fullScreenMap.SetActive(true);
+            else
+                fullScreenMap.SetActive(false);
     }
 
+    //Проверка входа в триггер финиш и смертельная зона
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Finish"))
+        //Если игрок зашёл в триггер "финиш" вызываем метод LoadNextLevel из скрипта sceneController для загрузки след. уровня
+        if (other.CompareTag("Finish"))
         {
             sceneController.LoadNextLevel();
         }
 
-        if(other.CompareTag("DeathZone"))
+        //Если игрок зашёл в триггер "смертельная зона" вызываем метод RestartCurrentLevel из скрипта sceneController для перезапуска текующего уровня
+        if (other.CompareTag("DeathZone"))
         {
             sceneController.RestartCurrentLevel();
         }
     }
 
+    //Если столкнулись с объектом с тегом Enemy
+    //Отключаем управление
+    //Отключаем отображение рендера игрок
+    //Задаём системе частиц материал соответствующий материалу игрока перед смертью
+    //Запускаем систему частиц для анимации эффекта смерти
+    //Вызываем метод RestartCurrentLevel из скрипта sceneController для перезапуска текующего уровня
     private void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.CompareTag("Enemy"))

@@ -120,7 +120,7 @@ MonoBehaviour:
     value: 0
   intensity:
     overrideState: 1
-    value: 2
+    value: 1
   color:
     overrideState: 0
     value: {r: 0, g: 0, b: 0, a: 1}
@@ -144,7 +144,7 @@ MonoBehaviour:
     value: 0
   radius:
     overrideState: 1
-    value: 0.25
+    value: 0.2
   quality:
     overrideState: 0
     value: 2
@@ -169,16 +169,16 @@ MonoBehaviour:
     value: 10
   threshold:
     overrideState: 1
-    value: 1
+    value: 0.8
   softKnee:
     overrideState: 1
-    value: 0.5
+    value: 0.7
   clamp:
     overrideState: 1
     value: 65472
   diffusion:
     overrideState: 1
-    value: 9
+    value: 6
   anamorphicRatio:
     overrideState: 1
     value: 0
@@ -207,7 +207,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adb84e30e02715445aeb9959894e3b4d, type: 3}
   m_Name: ColorGrading
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   enabled:
     overrideState: 1
     value: 1

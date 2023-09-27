@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class HiddenPath : MonoBehaviour
@@ -14,6 +12,8 @@ public class HiddenPath : MonoBehaviour
         path = GetComponentInChildren<Renderer>();
     }
 
+    //При входе в триггер проверяем, что вошёл именно игрок
+    //Вызываем метод ShowPath для подсветки прохода
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.layer == 6)
@@ -22,6 +22,8 @@ public class HiddenPath : MonoBehaviour
         }
     }
 
+    //При выходе из триггера проверяем, что вышёл именно игрок
+    //Вызываем метод HidePath, чтобы вернуть изначальную текстуру
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.layer == 6)
@@ -30,11 +32,13 @@ public class HiddenPath : MonoBehaviour
         }
     }
 
+    //Меняет текстуру прохода на более светлую, обозначая скрытый проход когда игрок находится в триггере
     private void ShowPath()
     {
         path.material = pathDetectedMat;
     }
 
+    //Возвращает изначальную текстуру скрытому проходу если игрок вышел из триггера
     private void HidePath()
     {
         path.material = pathHiddenMat;

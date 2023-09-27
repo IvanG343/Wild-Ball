@@ -2,78 +2,88 @@ using UnityEngine;
 
 public class TutorialController : MonoBehaviour
 {
-    [SerializeField] private GameObject tip0;
-    [SerializeField] private GameObject tip1;
-    [SerializeField] private GameObject tip2;
-    [SerializeField] private GameObject tip3;
-    [SerializeField] private PlayerControls playerControls;
+    [SerializeField] private GameObject tip0Panel;
+    [SerializeField] private GameObject tip1Panel;
+    [SerializeField] private GameObject tip2Panel;
+    [SerializeField] private GameObject tip3Panel;
+    [SerializeField] private GameObject tip4Panel;
 
-    private int currentTipIndex;
+    private PlayerControls playerControls;
     private GameObject triggerToDeactivate;
-    private bool inTriggerArea;
+    private int tipIndex;
 
+    private void Start()
+    {
+        playerControls = GameObject.Find("Player").GetComponent<PlayerControls>();
+    }
+
+    //При входе в триггер проверяем, что вошёл игрок
+    //Отключаем управление, проверяем в какой именно триггер вошли
+    //Активируем панель с текстом, задаём ID текущей подсказки, чтобы далее её отключить
+    //Присваиваем текущий тригер в перменную triggerToDeactivate для дальнейшней деактивации
     private void OnTriggerEnter(Collider other)
     {
-        inTriggerArea = true;
         if (other.gameObject.layer == 6)
         {
             playerControls.OnDisable();
             switch (gameObject.name)
             {
-                case "0.StartTipTrigger":
-                    tip0.SetActive(true);
-                    currentTipIndex = 0;
+                case "Tip0Trigger":
+                    tip0Panel.SetActive(true);
+                    tipIndex = 0;
                     triggerToDeactivate = gameObject;
                     break;
-                case "1.TrapTipTrigger":
-                    tip1.SetActive(true);
-                    currentTipIndex = 1;
+                case "Tip1Trigger":
+                    tip1Panel.SetActive(true);
                     triggerToDeactivate = gameObject;
+                    tipIndex = 1;
                     break;
-                case "2.PowerNodeTipTrigger":
-                    tip2.SetActive(true);
-                    currentTipIndex = 2;
+                case "Tip2Trigger":
+                    tip2Panel.SetActive(true);
                     triggerToDeactivate = gameObject;
+                    tipIndex = 2;
                     break;
-                case "3.PowerKeyTipTrigger":
-                    tip3.SetActive(true);
-                    currentTipIndex = 3;
+                case "Tip3Trigger":
+                    tip3Panel.SetActive(true);
                     triggerToDeactivate = gameObject;
+                    tipIndex = 3;
+                    break;
+                case "Tip4Trigger":
+                    tip4Panel.SetActive(true);
+                    triggerToDeactivate = gameObject;
+                    tipIndex = 4;
                     break;
             }
         }
     }
 
+    //При нажатии E отключаем подсказу по её индексу
+    //Отключаем триггер, чтобы не сработал повторно
+    //Возвращаем управление игроку
     private void Update()
     {
-        if (inTriggerArea)
+        if (Input.GetKeyDown(KeyCode.E))
         {
-            if (Input.GetKeyDown(KeyCode.E))
+            switch (tipIndex)
             {
-                switch (currentTipIndex)
-                {
-                    case 0:
-                        tip0.SetActive(false);
-                        triggerToDeactivate.SetActive(false);
-                        playerControls.OnEnable();
-                        break;
-                    case 1:
-                        tip1.SetActive(false);
-                        triggerToDeactivate.SetActive(false);
-                        playerControls.OnEnable();
-                        break;
-                    case 2:
-                        tip2.SetActive(false);
-                        triggerToDeactivate.SetActive(false);
-                        playerControls.OnEnable();
-                        break;
-                    case 3:
-                        tip3.SetActive(false);
-                        triggerToDeactivate.SetActive(false);
-                        playerControls.OnEnable();
-                        break;
-                }
+                case 0:
+                    tip0Panel.SetActive(false);
+                    break;
+                case 1:
+                    tip1Panel.SetActive(false);
+                    break;
+                case 2:
+                    tip2Panel.SetActive(false);
+                    break;
+                case 3:
+                    tip3Panel.SetActive(false);
+                    break;
+                case 4:
+                    tip4Panel.SetActive(false);
+                    break;
             }
+            triggerToDeactivate.SetActive(false);
+            playerControls.OnEnable();
         }
     }
 }

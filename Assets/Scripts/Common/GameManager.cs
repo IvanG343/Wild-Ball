@@ -3,30 +3,31 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private TeleportRoom teleportRoom;
-    [SerializeField] private GameObject stageCompleteWindow;
+    [SerializeField] private UIController uiController;
 
-    public int totalNodesOnLevel;
-    public static int nodesToWin;
+    //Кол-во нод на уровне
+    public int greenNodes;
+    public int redNodes;
+    public int purpleNodes;
+    public int yellowNodes;
+    public int totalNodes;
 
+    //Считаем изначальное общее кол-во нод на уровне
     private void Start()
     {
-        nodesToWin = totalNodesOnLevel;
+        totalNodes = greenNodes + redNodes + purpleNodes + yellowNodes;
     }
 
+    //Проверяем общее кол-во нод и если их становится 0, открываем комнату телепорт
+    //Выводим подсказку на экран через скрипт UIController
     private void Update()
     {
-        if (nodesToWin == 0)
+        if (totalNodes == 0)
         {
-            nodesToWin = -1;
+            totalNodes = -1; //Ставим значение -1, чтобы условие в апдейте больше не выполнялось.
             teleportRoom.OpenTeleportRoom();
-            ShowStageComleteWindow();
+            uiController.ShowLevelCompleteMessage();
         }
-        Debug.Log(Time.timeScale);
-    }
-
-    private void ShowStageComleteWindow()
-    {
-        stageCompleteWindow.SetActive(true);
     }
 }
 
