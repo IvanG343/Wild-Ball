@@ -6,16 +6,12 @@ public class GameManager : MonoBehaviour
     [SerializeField] private UIController uiController;
 
     // ол-во нод на уровне
-    public int greenNodes;
-    public int redNodes;
-    public int purpleNodes;
-    public int yellowNodes;
     public int totalNodes;
 
     //—читаем изначальное общее кол-во нод на уровне
     private void Start()
     {
-        totalNodes = greenNodes + redNodes + purpleNodes + yellowNodes;
+        //totalNodes = greenNodes + redNodes + purpleNodes + yellowNodes;
     }
 
     //ѕровер€ем общее кол-во нод и если их становитс€ 0, открываем комнату телепорт

@@ -11,6 +11,7 @@ public class TutorialController : MonoBehaviour
     private PlayerControls playerControls;
     private GameObject triggerToDeactivate;
     private int tipIndex;
+    private bool inTriggerArea;
 
     private void Start()
     {
@@ -25,6 +26,7 @@ public class TutorialController : MonoBehaviour
     {
         if (other.gameObject.layer == 6)
         {
+            inTriggerArea = true;
             playerControls.OnDisable();
             switch (gameObject.name)
             {
@@ -62,7 +64,7 @@ public class TutorialController : MonoBehaviour
     //Возвращаем управление игроку
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (inTriggerArea && Input.GetKeyDown(KeyCode.E))
         {
             switch (tipIndex)
             {

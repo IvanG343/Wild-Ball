@@ -7,12 +7,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Material purpleMat;
     [SerializeField] private Material yellowMat;
 
-    [SerializeField] private SceneController sceneController;
-    [SerializeField] private GameObject fullScreenMap;
-
     [SerializeField] private ParticleSystem electricityParticles;
     [SerializeField] private ParticleSystem deathParticles;
     [SerializeField] private ParticleSystemRenderer deathParticlesMat;
+
+    private SceneController sceneController;
+    private GameObject fullScreenMap;
 
     private Renderer playerCurrentMaterial;
     private PlayerControls playerControls;
@@ -21,6 +21,8 @@ public class PlayerController : MonoBehaviour
     {
         playerCurrentMaterial = GetComponent<Renderer>();
         playerControls = GetComponent<PlayerControls>();
+        fullScreenMap = GameObject.Find("FullScreenMap");
+        sceneController = GameObject.Find("LevelLoader").GetComponent<SceneController>();
     }
 
     //Вызывается из скрипта PowerKeyController

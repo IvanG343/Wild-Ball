@@ -1,18 +1,42 @@
+using System.Threading;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MenuHandler : MonoBehaviour
 {
+    [SerializeField] private GameObject pausePanel;
+    [SerializeField] private SceneController sceneController;
 
-    [SerializeField] public GameObject pausePanel;
-    [SerializeField] public SceneController sceneController;
+    [SerializeField] private Image soundCheckbox;
+    [SerializeField] private Image musicCheckbox;
+    [SerializeField] private Sprite checkboxSpriteTrue;
+    [SerializeField] private Sprite checkboxSpriteFalse;
+
+    private bool soundState = true;
+    private bool musicState = true;
+
+    private bool isPauseScreen = false;
+
+    //Вызов меню паузы по нажатию Escape
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (!isPauseScreen)
+                OnClickPauseButton();
+            else
+                OnClickResumeButton();
+        }
+    }
 
     //Вызов меню паузы
     public void OnClickPauseButton()
     {
         Time.timeScale = 0;
-        if(!pausePanel.activeSelf)
+        if (!pausePanel.activeSelf)
         {
             pausePanel.SetActive(true);
+            isPauseScreen = true;
         }
     }
 
@@ -23,6 +47,7 @@ public class MenuHandler : MonoBehaviour
         if (pausePanel.activeSelf)
         {
             pausePanel.SetActive(false);
+            isPauseScreen = false;
         }
     }
 
@@ -46,4 +71,39 @@ public class MenuHandler : MonoBehaviour
         sceneController.LoadLevel(id);
     }
 
+    //Вкл-выкл звук (пока что функция не выключает звук, только визуал кнопок)
+    public void SoundControl()
+    {
+        if (soundState)
+        {
+            soundCheckbox.sprite = checkboxSpriteFalse;
+            soundState = false;
+        }
+        else
+        {
+            soundCheckbox.sprite = checkboxSpriteTrue;
+            soundState = true;
+        }
+    }
+
+    //Вкл-выкл музыку (пока что функция не выключает звук, только визуал кнопок)
+    public void MusicControl()
+    {
+        if (musicState)
+        {
+            musicCheckbox.sprite = checkboxSpriteFalse;
+            musicState = false;
+        }
+        else
+        {
+            musicCheckbox.sprite = checkboxSpriteTrue;
+            musicState = true;
+        }
+    }
+
+    //Выход из приложения
+    public void OnClickExitGameButton()
+    {
+        Application.Quit();
+    }
 }
