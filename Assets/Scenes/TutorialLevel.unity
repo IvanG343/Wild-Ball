@@ -4385,7 +4385,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 88933943}
-  m_LocalRotation: {x: -0.045384184, y: -0.0042360723, z: 0.0052888542, w: 0.99894667}
+  m_LocalRotation: {x: -0.04538408, y: -0.004236132, z: 0.0052889436, w: 0.99894667}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -20565,10 +20565,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 353768517116880025, guid: b0d85c42de72565409b195b71cdb8a29, type: 3}
-      propertyPath: m_Text
-      value: 'Maze size: Undefined'
-      objectReference: {fileID: 0}
     - target: {fileID: 1744601638301885095, guid: b0d85c42de72565409b195b71cdb8a29, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -20661,10 +20657,6 @@ PrefabInstance:
       propertyPath: sceneController
       value: 
       objectReference: {fileID: 1943879426}
-    - target: {fileID: 8049930419879320416, guid: b0d85c42de72565409b195b71cdb8a29, type: 3}
-      propertyPath: m_SortingOrder
-      value: 100
-      objectReference: {fileID: 0}
     - target: {fileID: 9181234698855716151, guid: b0d85c42de72565409b195b71cdb8a29, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -22147,7 +22139,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 0eb92eef28fa75243b57636357e673c9, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 012e55fd6ad86054bae82613c6daaa6c, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.25
   m_Pitch: 1
@@ -22898,7 +22890,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   teleportRoom: {fileID: 840905897}
   uiController: {fileID: 1470771771}
-  totalNodes: 2
+  totalNodes: 0
+  greenNodes: 1
+  redNodes: 0
+  purpleNodes: 0
+  yellowNodes: 1
 --- !u!4 &1949216099
 Transform:
   m_ObjectHideFlags: 0

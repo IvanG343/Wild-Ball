@@ -29,7 +29,7 @@ public class PowerNodeController : MonoBehaviour
     //Запускаем анимцию активации ноды и проигрываем звук
     //Убираем флаг, что игрок в триггере, после успешного взаимодействия, чтобы он не мог спамить Е запуская звук и анимации бесконечно
     //Вызывает метод HideActionTip скрипта UIController для скрытия подсказки "Нажмите Е для взаимодействия" после того как игрок успешно сменил свой материал
-    //Делаем декремент перменной totalNodes скрипта GameManager (условие прохождения уровня активировать все ноды, т.е. totalNodes == 0)
+    //Вызывает метод ExcludeNodeFromCounter скрипта GameManager, исключая активированную ноду из счётчика
     private void Update()
     {
         if (playerInArea)
@@ -41,7 +41,7 @@ public class PowerNodeController : MonoBehaviour
                 nodeUseSound.Play();
                 playerInArea = false;
                 uiController.HideActionTip();
-                gameManager.totalNodes--;
+                gameManager.ExcludeNodeFromCounter(gameObject.tag);
             }
         }
     }

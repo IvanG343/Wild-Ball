@@ -693,8 +693,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teleportRoom: {fileID: 1651838762}
-  stageCompleteWindow: {fileID: 878440108}
-  totalNodesOnLevel: 3
+  uiController: {fileID: 0}
+  totalNodes: 0
+  greenNodes: 0
+  redNodes: 0
+  purpleNodes: 0
+  yellowNodes: 0
 --- !u!4 &769701864
 Transform:
   m_ObjectHideFlags: 0
@@ -899,11 +903,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b0d85c42de72565409b195b71cdb8a29, type: 3}
---- !u!1 &878440108 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4859745521999940702, guid: b0d85c42de72565409b195b71cdb8a29, type: 3}
-  m_PrefabInstance: {fileID: 878440107}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &894691520
 GameObject:
   m_ObjectHideFlags: 0
@@ -1781,7 +1780,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 0eb92eef28fa75243b57636357e673c9, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 012e55fd6ad86054bae82613c6daaa6c, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.25
   m_Pitch: 1
@@ -2044,7 +2043,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1539150512}
-  m_LocalRotation: {x: 0.46094275, y: -0.000000046773955, z: 0.000000024295009, w: 0.8874299}
+  m_LocalRotation: {x: 0.46094278, y: 0.00000003562041, z: -0.000000018501712, w: 0.8874299}
   m_LocalPosition: {x: 1, y: 6.7756567, z: -3.3244572}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2429,7 +2428,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2056720036}
-  m_LocalRotation: {x: 0.46507287, y: -0.000000027099642, z: 0.000000014236645, w: 0.88527244}
+  m_LocalRotation: {x: 0.4650729, y: 0.00000003782147, z: -0.000000019869296, w: 0.88527244}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
