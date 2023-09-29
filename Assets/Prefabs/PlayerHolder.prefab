@@ -4860,7 +4860,7 @@ Transform:
   - {fileID: 2162304655916062783}
   - {fileID: 4162293274237004363}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5318197119756868824
 GameObject:
@@ -9883,8 +9883,8 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
+  m_Constraints: 112
+  m_CollisionDetection: 1
 --- !u!143 &9128747125090424566
 CharacterController:
   m_ObjectHideFlags: 0
@@ -9927,7 +9927,6 @@ MonoBehaviour:
   greenMat: {fileID: 2100000, guid: bfb74f7c48af0764d92e14be1b761ee9, type: 2}
   purpleMat: {fileID: 2100000, guid: 4d232abb7c7c970459e4d0012738a1b7, type: 2}
   yellowMat: {fileID: 2100000, guid: 3759b5399a24b4446b9b26f6f5a62158, type: 2}
-  sceneController: {fileID: 0}
   electricityParticles: {fileID: 6672550872282581331}
   deathParticles: {fileID: 6472982654476725232}
   deathParticlesMat: {fileID: 4488341589405487356}

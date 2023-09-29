@@ -23,7 +23,6 @@ public class GameManager : MonoBehaviour
     //Вызывает метод UpdateNodeCounterText скрипта UIController, чтобы обновить значения кол-ва нод оставшихся на уровне
     public void ExcludeNodeFromCounter(string color)
     {
-        Debug.Log("ExcludeNodeFromCounter" + color);
         switch (color)
         {
             case "Green":

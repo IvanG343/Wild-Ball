@@ -33,7 +33,6 @@ public class UIController : MonoBehaviour
     //Обновляем значения кол-ва нод оставшихся на уровне на экране паузы
     public void UpdateNodeCounterText(int green, int red, int purple, int yellow)
     {
-        Debug.Log($"UpdateNodeCounterText green {green}, red {red}, purple {purple}, yellow {yellow}");
         greenNodeCountText.text = green.ToString();
         redNodeCountText.text = red.ToString();
         purpleNodeCountText.text = purple.ToString();
