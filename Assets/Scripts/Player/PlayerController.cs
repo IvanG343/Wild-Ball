@@ -62,8 +62,6 @@ public class PlayerController : MonoBehaviour
     //Вызывает карту при нажатии на клавишу М
     private void Update()
     {
-        deathParticles.transform.position = gameObject.transform.position;
-
         if(Input.GetKeyDown(KeyCode.M))
             if(!fullScreenMap.activeSelf)
                 fullScreenMap.SetActive(true);

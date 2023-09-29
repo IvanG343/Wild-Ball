@@ -1165,7 +1165,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 217661835}
-  m_LocalRotation: {x: 0.4650729, y: -0.00000003782147, z: 0.000000019869296, w: 0.88527244}
+  m_LocalRotation: {x: 0.4650729, y: -0.00000003782146, z: 0.000000019869292, w: 0.88527244}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1785,7 +1785,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 303639024}
-  m_LocalRotation: {x: 0.46094278, y: -0.00000003562041, z: 0.000000018501712, w: 0.8874299}
+  m_LocalRotation: {x: 0.46094278, y: -0.000000035620406, z: 0.00000001850171, w: 0.8874299}
   m_LocalPosition: {x: 10, y: 6.7756567, z: 0.42554283}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4388,7 +4388,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2891963039880289642, guid: 6d62fd965ff87e249998142cbcbed7aa, type: 3}
       propertyPath: MaxDistance
-      value: 3
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 2891963039880289642, guid: 6d62fd965ff87e249998142cbcbed7aa, type: 3}
       propertyPath: MinDistance
@@ -4400,7 +4400,7 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: 4e13258f0b7974b4ea4e39e0c29bdf24, type: 3}
     - target: {fileID: 2891963039880289642, guid: 6d62fd965ff87e249998142cbcbed7aa, type: 3}
       propertyPath: rolloffMode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2891963039880289642, guid: 6d62fd965ff87e249998142cbcbed7aa, type: 3}
       propertyPath: m_PlayOnAwake
