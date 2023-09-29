@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
 
     private Renderer playerCurrentMaterial;
     private PlayerControls playerControls;
+    private AudioSource changeColorSound;
 
     private void Awake()
     {
@@ -23,38 +24,38 @@ public class PlayerController : MonoBehaviour
         playerControls = GetComponent<PlayerControls>();
         fullScreenMap = GameObject.Find("FullScreenMap");
         sceneController = GameObject.Find("LevelLoader").GetComponent<SceneController>();
+        changeColorSound = GetComponent<AudioSource>();
     }
 
     //Вызывается из скрипта PowerKeyController
     //Меняет материал игрока на цвет соовтествуюещй сфере
-    //Запускает систему частиц для эффекта активации
     //Задаёт игроку тег соовтествующий новому цвету
+    //Запускает систему частиц для эффекта активации
+    //Проигрывает звуковой эффект смены цвета
     public void ChangePlayerColor(string color)
     {
         switch (color)
         {
             case "Yellow":
                 playerCurrentMaterial.material = yellowMat;
-                electricityParticles.Play();
                 gameObject.tag = "Yellow";
                 break;
             case "Red":
                 playerCurrentMaterial.material = redMat;
-                electricityParticles.Play();
                 gameObject.tag = "Red";
                 break;
             case "Green":
                 playerCurrentMaterial.material = greenMat;
-                electricityParticles.Play();
                 gameObject.tag = "Green";
                 break;
             case "Purple":
                 playerCurrentMaterial.material = purpleMat;
-                electricityParticles.Play();
                 gameObject.tag = "Purple";
                 break;
             default: break;
         }
+        electricityParticles.Play();
+        changeColorSound.Play();
     }
 
     //Задаёт позицию системе частиц смерти равную позиции игрока

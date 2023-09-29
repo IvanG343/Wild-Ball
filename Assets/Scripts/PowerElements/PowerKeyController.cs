@@ -4,7 +4,6 @@ public class PowerKeyController : MonoBehaviour
 {
     private PlayerController playerController;
     private UIController uiController;
-    private AudioSource useSound;
 
     private bool playerInArea;
 
@@ -12,12 +11,10 @@ public class PowerKeyController : MonoBehaviour
     {
         playerController = GameObject.Find("Player").GetComponent<PlayerController>();
         uiController = GameObject.Find("UICanvas").GetComponent<UIController>();
-        useSound = GetComponentInChildren<AudioSource>();
     }
 
     //Проверяем, что игрок находится в триггере сферы ключа
     //Вызываем метод ChangePlayerColor из скрипта PlayerController, чтобы задать игроку новый мтариал соответствующий материалку сферы ключа
-    //Проигрываем звук активации сферы ключа
     //Вызывает метод HideActionTip скрипта UIController для скрытия подсказки "Нажмите Е для взаимодействия" после того как игрок успешно сменил свой материал
     private void Update()
     {
@@ -26,7 +23,6 @@ public class PowerKeyController : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.E))
             {
                 playerController.ChangePlayerColor(gameObject.tag);
-                useSound.Play();
                 playerInArea = false;
                 uiController.HideActionTip();
             }
