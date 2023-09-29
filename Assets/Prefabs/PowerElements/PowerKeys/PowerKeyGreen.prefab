@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6376100233980641070}
   - component: {fileID: 6600989068000869666}
   - component: {fileID: 2891963039880289642}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -213,7 +213,7 @@ GameObject:
   - component: {fileID: 1898600443361182843}
   - component: {fileID: 1101039288404217065}
   - component: {fileID: 3674948258536769859}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PowerKeyGreen
   m_TagString: Green
   m_Icon: {fileID: 0}
